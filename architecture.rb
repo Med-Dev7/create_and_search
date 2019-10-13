@@ -17,7 +17,7 @@ end
 def create_gemfile_and_write()
   system("bundle init")
   file = File.open("Gemfile", "a")
-  file.puts("Ruby '2.5.1'")
+  file.puts("ruby '2.5.1'")
   file.puts("gem 'pry'")
   file.puts("gem 'rspec'")
   file.puts("gem 'rubocop', '~> 0.57.2'")
@@ -34,8 +34,9 @@ end
 
 # Création du fichier .env, puis on le met dans le fichier gitignore
 def system_call_dotenv
-  system("dotenv-init")
-  # system("mv .env gitignore")
+  File.open(".env", "w+")
+  system("mv .env gitignore")
+  
 end
 
 # Création du dossier lib
